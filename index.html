@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agricultura Sustentável e Cidades Verdes</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <nav aria-label="Atalhos de Acessibilidade">
+    <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+  </nav>
+
+  <header>
+    <h1 id="welcome">🌿 Agricultura Sustentável</h1>
+    <h2>Cidades Verdes e Futuro Sustentável</h2>
+    <div class="acessibilidade">
+      <button onclick="aumentarFonte()" aria-label="Aumentar fonte">A+</button>
+      <button onclick="diminuirFonte()" aria-label="Diminuir fonte">A-</button>
+      <button onclick="alternarContraste()" aria-label="Alternar contraste">🌗</button>
+    </div>
+  </header>
+
+  <h2>Mapa de Hortas Urbanas</h2>
+  <p>Este mapa interativo exibe apenas 3 hortas urbanas espalhadas por Estado. Explore o mapa e descubra como hortas estão transformando as cidades e trazendo benefícios à comunidade!</p>
+
+  <main id="conteudo">
+    <section class="video">
+      <h2>Assista ao Vídeo sobre Agricultura Sustentável - Hortas Urbanas</h2>
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/heM4vBNmLds" title="Vídeo sobre Agricultura Sustentável" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </section>
+    
+    <section class="mapa">
+      <h2>Hortas Urbanas Perto de Você</h2>
+      <div id="map" style="height: 400px;"></div>
+    </section>
+
+    <section>
+      <h2>🌱 Impactos Ambientais</h2>
+      <p>
+        Melhoria da qualidade do ar:
+        As plantas capturam CO₂ e liberam oxigênio, ajudando a purificar o ar das cidades.
+        
+        Redução de ilhas de calor:
+        A vegetação diminui a temperatura em áreas urbanas, tornando o clima mais agradável.
+        
+        Aproveitamento de espaços ociosos:
+        Terrenos baldios e áreas abandonadas se transformam em espaços verdes produtivos.
+        
+        Aumento da biodiversidade urbana:
+        Hortas atraem insetos polinizadores, aves e pequenos animais, enriquecendo o ecossistema local.
+        
+         </p>
+    </section>
+
+    <section>
+      <h2>Hortas Urbanas</h2>
+      <p>Hortas urbanas são espaços dedicados ao cultivo de alimentos em áreas urbanas, como jardins, quintais, varandas, telhados, ou até mesmo dentro de casa, em vasos ou sistemas hidropônicos. Elas podem ser cultivadas por indivíduos, famílias, comunidades ou projetos coletivos, visando fornecer alimentos frescos e saudáveis, além de promoverem a conexão com a natureza e o fortalecimento da comunidade. </p>
+    </section>
+
+    <section>
+      <h2>Inovações Sustentáveis</h2>
+      <p>Oferecem benefícios como segurança alimentar, educação ambiental, coesão social e geração de renda. Em Curitiba, por exemplo, existem várias hortas comunitárias que promovem o cultivo em áreas urbanas, melhorando a qualidade de vida da população. 
+      </p>
+    </section>
+
+    <section>
+      <h2>Principais hortas em diversos Estados</h2>
+      <ul>
+        <li><strong>São Paulo:</strong> Horta Comunitária do Cantinho da Paz, Horta Municipal do Alto de Pinheiros, Horta do Núcleo de Educação Ambiental.</li>
+        <li><strong>Rio de Janeiro:</strong> Horta Comunitária da Zona Norte, Horta do Parque Nacional de Tijuca, Horta do Centro Educacional Unificado.</li>
+        <li><strong>Minas Gerais:</strong> Horta Comunitária Belo Horizonte, Horta do Mercado Central, Horta Educativa do SESC.</li>
+        <li><strong>Paraná:</strong> Horta da Universidade de Curitiba, Horta do Parque Barigui, Horta do Instituto de Permacultura.</li>
+        <li><strong>Pernambuco:</strong> Horta do Mercado Municipal de Recife, Horta Comunitária da Ilha do Leite, Horta do SESC Pompéia.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Como Você Pode Contribuir</h2>
+      <p>Participe da iniciativa! Comece sua própria horta urbana, faça voluntariado ou apoie as hortas comunitárias locais. Você pode ajudar a promover a agricultura sustentável na sua cidade e aumentar o acesso à alimentação saudável.</p>
+    </section>
+
+    <section class="galeria">
+      <h2>Galeria</h2>
+      <div class="grid">
+        <div><img src="imagens/pessoa-plantando.jpg" alt="Pessoa plantando" onclick="abrirModal(this.src)" /></div>
+        <div><img src="imagens/horta-urbana-001-1080x620.jpg" alt="Horta urbana" onclick="abrirModal(this.src)" /></div>
+        <div><img src="imagens/mini_agricultura-vertical.webp" alt="Agricultura vertical" onclick="abrirModal(this.src)" /></div>
+      </div>
+    </section>
+
+    <div id="modal" role="dialog" aria-modal="true">
+      <span class="close" onclick="fecharModal()" aria-label="Fechar">&times;</span>
+      <img id="modal-img" src="" alt="Imagem ampliada" />
+    </div>
+
+    <section class="comentarios">
+      <h2>Comentários</h2>
+      <form id="comentario-form">
+        <textarea id="comentario" placeholder="Deixe seu comentário..." aria-label="Campo para comentário"></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+      <ul id="lista-comentarios" aria-live="polite"></ul>
+    </section>
+
+    <section class="newsletter">
+      <h2>Receba Novidades</h2>
+      <form id="newsletter-form">
+        <input type="email" id="email" placeholder="Seu e-mail" aria-label="Campo de e-mail" />
+        <button type="submit">Inscrever-se</button>
+      </form>
+      <p id="feedback" role="status"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Agricultura Sustentável</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
